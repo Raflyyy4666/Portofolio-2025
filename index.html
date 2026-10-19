@@ -1,205 +1,524 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html class="scroll-smooth" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Rafly — Web Developer &amp; Informatics Student</title>
 
-        <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Boxicons -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>Portfolio Rafly</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">Rafly</a>
-                </div>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-                    </ul>
-                </div>
+    <script>
+        tailwind.config = {
+          darkMode: 'class',
+          theme: {
+            extend: {
+              colors: {
+                brand: {
+                  orange: '#F95700',
+                  orangeDark: '#D94900',
+                  orangeLight: '#FFF5F0',
+                  black: '#121212',
+                  charcoal: '#1A1A1A',
+                  cream: '#FAFAF8',
+                  muted: '#6E6E73',
+                  border: '#E8E8E6',
+                  dotRed: '#EE4036',
+                  dotBlue: '#2E5BFF',
+                  dotGreen: '#10B981',
+                  dotYellow: '#FFB800'
+                },
+                darkBg: '#0F1117',
+                darkCard: '#1A1D27',
+                darkBorder: '#2E3346',
+                darkMuted: '#9CA3AF'
+              },
+              fontFamily: {
+                sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                display: ['"Space Grotesk"', 'sans-serif'],
+              },
+              letterSpacing: {
+                tighter: '-0.04em',
+                tight: '-0.02em',
+              }
+            }
+          }
+        }
+    </script>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
+    <!-- Custom Animation Styles -->
+    <style>
+        @keyframes marquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          display: flex;
+          width: 200%;
+          animation: marquee 22s linear infinite;
+        }
+        .ribbon-tilt {
+          transform: rotate(-1.5deg) scale(1.02);
+        }
+        @keyframes subtle-bob {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-6px) scale(1.1); }
+        }
+        .dot-float {
+          animation: subtle-bob 4s ease-in-out infinite;
+        }
+        .dot-float-delayed {
+          animation: subtle-bob 5s ease-in-out 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#FAFAF8] dark:bg-[#0F1117] text-brand-black dark:text-[#F3F4F6] antialiased selection:bg-brand-orange selection:text-white font-sans transition-colors duration-300 overflow-x-hidden min-h-screen">
+
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-[#0F1117]/90 backdrop-blur-md border-b border-brand-border/70 dark:border-darkBorder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a aria-label="Rafly Portfolio" class="flex items-center gap-2 group" href="#">
+                <span class="text-2xl font-display font-extrabold tracking-tight text-brand-orange group-hover:opacity-90 transition-opacity">Rafly</span>
+                <span class="inline-block w-2 h-2 rounded-full bg-brand-dotRed"></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+                <a class="text-brand-orange hover:text-brand-orange transition-colors" href="#home">Home</a>
+                <a class="hover:text-brand-orange transition-colors" href="#about">About</a>
+                <a class="hover:text-brand-orange transition-colors" href="#skills">Skills</a>
+                <a class="hover:text-brand-orange transition-colors" href="#work">Work</a>
+                <a class="hover:text-brand-orange transition-colors" href="#contact">Contact</a>
             </nav>
-        </header>
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Rafly</span><br> Web Developer</h1>
-
-                    <a href="#" class="button">Contact</a>
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <!-- Status Pill -->
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 shadow-xs">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-emerald-800 dark:text-emerald-300 tracking-tight">Open to collaborate</span>
                 </div>
 
-                <div class="home__social">
-                    <a href="https://www.instagram.com/raflyyaprill_?igsh=MTVocmJqaGk0cWw5dw==" class="home__social-icon"><i class='bx bxl-instagram'></i></a>
-                    <a href="https://www.facebook.com/share/14QCTZa39wA/" class="home__social-icon"><i class='bx bxl-facebook' ></i></a>
-                    <a href="https://github.com/Raflyyy4666" class="home__social-icon"><i class='bx bxl-github' ></i></a>
-                </div>
-
-                <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="assets/img/profile.png"/>
-                        </g>
+                <!-- Dark Mode Toggle Button -->
+                <button aria-label="Toggle dark mode" class="w-10 h-10 rounded-xl flex items-center justify-center border border-zinc-200 dark:border-darkBorder bg-white dark:bg-[#1A1D27] text-zinc-700 dark:text-zinc-200 hover:border-brand-orange/50 transition-all shadow-xs" id="themeToggle">
+                    <!-- Sun Icon (Shown in Dark Mode) -->
+                    <svg class="hidden dark:block w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
                     </svg>
-                </div>
-            </section>
+                    <!-- Moon Icon (Shown in Light Mode) -->
+                    <svg class="block dark:hidden w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                </button>
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
-
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/raf.jpg" alt="">
-                    </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">I'am Rafly</h2>
-                        <p class="about__text">Saya Adalah Seorang Mahasiswa Universitas Dharma Indonesia, Prodi Informatika Angkatan 2025.</p>           
-                    </div>                                   
-                </div>
-            </section>
-
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
-
-                <div class="skills__container bd-grid">          
-                    <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">Paham dasar dasar coding menggunakan HTMl dan CSS.</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">HTML5</span>
-                            </div>
-                            <div class="skills__bar skills__html">
-
-                            </div>
-                            <div>
-                                <span class="skills__percentage">75%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-css3 skills__icon'></i>
-                                <span class="skills__name">CSS3</span>
-                            </div>
-                            <div class="skills__bar skills__css">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
-                                <span class="skills__name">JAVASCRIPT</span>
-                            </div>
-                            <div class="skills__bar skills__js">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">55%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">UX/UI</span>
-                            </div>
-                            <div class="skills__bar skills__ux">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">75%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
-                    </div>
-                </div>
-            </section>
-
-            <!--===== WORK =====-->
-            <section class="work section" id="work">
-                <h2 class="section-title">Work</h2>
-
-                <div class="work__container bd-grid">
-                    <a href="" class="work__img">
-                        <img src="assets/img/work1.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work2.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work3.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </a>
-                </div>
-            </section>
-
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
-
-                <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Enviar" class="contact__button button">
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Rafly</p>
-            <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <!-- Say Hi Button -->
+                <a class="text-sm font-semibold px-4 py-2 rounded-xl bg-brand-black dark:bg-zinc-100 text-white dark:text-brand-black hover:bg-brand-orange dark:hover:bg-brand-orange dark:hover:text-white transition-all shadow-sm" href="#contact">
+                    Say Hi 👋
+                </a>
             </div>
-            <p class="footer__copy">&#169; Bedimcode. All rigths reserved</p>
+        </div>
+    </header>
+
+    <main class="w-full">
+        <!-- ===== HERO SECTION ===== -->
+        <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden" id="home">
+            <!-- Confetti Dots Animation -->
+            <div aria-hidden="true" class="absolute inset-0 pointer-events-none max-w-7xl mx-auto overflow-hidden">
+                <div class="absolute top-10 left-12 w-2.5 h-2.5 rounded-full bg-brand-dotRed dot-float"></div>
+                <div class="absolute top-28 left-72 w-2 h-2 rounded-full bg-brand-dotBlue dot-float-delayed"></div>
+                <div class="absolute top-14 left-1/3 w-3 h-3 rounded-full bg-brand-dotYellow dot-float"></div>
+                <div class="absolute top-44 left-1/2 w-3 h-3 rounded-full bg-brand-dotGreen dot-float"></div>
+                <div class="absolute bottom-20 left-16 w-2.5 h-2.5 rounded-full bg-brand-dotGreen"></div>
+                <div class="absolute bottom-8 left-1/3 w-2 h-2 rounded-full bg-brand-dotBlue"></div>
+                <div class="absolute bottom-16 left-1/2 w-2.5 h-2.5 rounded-full bg-brand-dotRed dot-float"></div>
+                <div class="absolute bottom-12 left-[58%] w-2 h-2 rounded-full bg-brand-dotGreen"></div>
+                <div class="absolute top-20 right-1/4 w-2.5 h-2.5 rounded-full bg-brand-dotYellow dot-float-delayed"></div>
+                <div class="absolute top-16 right-16 w-2.5 h-2.5 rounded-full bg-brand-dotGreen dot-float"></div>
+                <div class="absolute top-36 right-8 w-2 h-2 rounded-full bg-brand-dotRed"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left: Hero Text & CTA -->
+                    <div class="lg:col-span-7 relative z-10">
+                        <div class="mb-3">
+                            <span class="text-brand-orange font-bold text-lg tracking-wide">Hello, I’m</span>
+                        </div>
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter text-brand-black dark:text-white leading-[1.08] mb-6 font-display">
+                            Rafly
+                        </h1>
+                        <p class="text-lg lg:text-xl leading-relaxed text-zinc-600 dark:text-darkMuted font-normal mb-8 max-w-xl">
+                            Saya adalah seorang Mahasiswa <strong>Universitas Dharma Indonesia</strong>, Program Studi Informatika Angkatan 2025. Berfokus pada Front-End Web Development dan antarmuka antarpengguna (UI/UX) yang modern serta responsif.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center gap-4 mb-10">
+                            <a class="py-3.5 px-7 rounded-xl bg-brand-orange text-white font-semibold text-base shadow-lg shadow-brand-orange/30 hover:bg-brand-orangeDark transition-all active:scale-[0.98]" href="#contact">
+                                Hubungi Saya
+                            </a>
+                            <a class="py-3.5 px-7 rounded-xl border-2 border-brand-black dark:border-white text-brand-black dark:text-white font-semibold text-base bg-transparent hover:bg-brand-black hover:text-white dark:hover:bg-white dark:hover:text-brand-black transition-all active:scale-[0.98] inline-flex items-center gap-2" href="#work">
+                                <span>Lihat Portofolio</span>
+                                <span class="text-lg leading-none">↗</span>
+                            </a>
+                        </div>
+
+                        <!-- Social Links & Profiles -->
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/Raflyyy4666" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-darkCard hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange transition-colors border border-brand-border dark:border-darkBorder text-xl">
+                                    <i class='bx bxl-github'></i>
+                                </a>
+                                <a href="https://www.instagram.com/raflyyaprill_?igsh=MTVocmJqaGk0cWw5dw==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-darkCard hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange transition-colors border border-brand-border dark:border-darkBorder text-xl">
+                                    <i class='bx bxl-instagram'></i>
+                                </a>
+                                <a href="https://www.facebook.com/share/14QCTZa39wA/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-darkCard hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange transition-colors border border-brand-border dark:border-darkBorder text-xl">
+                                    <i class='bx bxl-facebook'></i>
+                                </a>
+                            </div>
+                            <div class="text-sm font-semibold text-zinc-800 dark:text-zinc-200 pl-2 border-l border-zinc-300 dark:border-zinc-700">
+                                <span class="text-brand-orange font-bold text-base">@Raflyyy4666</span> on GitHub
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Hero Portrait Box -->
+                    <div class="lg:col-span-5 relative z-10 flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-[420px]">
+                            <!-- Offset Orange Accent Frame -->
+                            <div aria-hidden="true" class="absolute -inset-2 -translate-x-4 translate-y-5 rounded-2xl border-2 border-brand-orange bg-transparent pointer-events-none"></div>
+
+                            <!-- Main Image Container -->
+                            <div class="relative rounded-2xl overflow-hidden bg-white dark:bg-darkCard shadow-2xl aspect-[4/4.8] border border-brand-border dark:border-darkBorder">
+                                <img alt="Rafly - Web Developer" class="w-full h-full object-cover object-top" src="assets/img/raf.jpg" onerror="this.onerror=null; this.src='assets/img/profile.png';"/>
+                                
+                                <!-- Floating Specialization Badge -->
+                                <div class="absolute bottom-4 left-4 right-4 bg-brand-black/90 dark:bg-black/90 backdrop-blur-md py-3 px-4 rounded-xl flex items-center justify-between text-white border border-white/10 shadow-lg">
+                                    <div>
+                                        <p class="text-[10px] uppercase font-bold tracking-wider text-brand-orange">Spesialisasi</p>
+                                        <p class="text-xs font-semibold">Web Development &amp; UI/UX</p>
+                                    </div>
+                                    <span class="text-xs px-2.5 py-1 rounded bg-white/20 text-white font-mono font-bold">IDN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MARQUEE RIBBON ===== -->
+        <section class="relative my-6 lg:my-12 overflow-hidden py-4 lg:py-5 bg-brand-black dark:bg-[#161822] ribbon-tilt shadow-xl border-y border-white/10">
+            <div class="animate-marquee whitespace-nowrap flex items-center gap-10 font-display uppercase tracking-widest text-sm lg:text-base font-bold text-white select-none">
+                <span class="inline-flex items-center gap-4">Develop <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Discover <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Design <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Code <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Frontend <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Develop <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Discover <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Design <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Code <span class="text-brand-orange text-lg">●</span></span>
+                <span class="inline-flex items-center gap-4">Frontend <span class="text-brand-orange text-lg">●</span></span>
+            </div>
+        </section>
+
+        <!-- ===== KEY METRICS & ABOUT SUMMARY ===== -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-10 lg:py-14" id="about">
+            <div class="bg-white dark:bg-darkCard rounded-3xl border border-brand-border dark:border-darkBorder p-8 lg:p-12 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-brand-border dark:divide-darkBorder text-center gap-6 md:gap-0">
+                    <div class="px-6 py-2">
+                        <div class="text-4xl lg:text-5xl font-extrabold font-display text-brand-orange tracking-tight">2025</div>
+                        <div class="text-sm lg:text-base text-zinc-600 dark:text-darkMuted font-medium mt-2">Informatika — UNDHARI</div>
+                    </div>
+                    <div class="px-6 py-2">
+                        <div class="text-4xl lg:text-5xl font-extrabold font-display text-brand-orange tracking-tight">4+</div>
+                        <div class="text-sm lg:text-base text-zinc-600 dark:text-darkMuted font-medium mt-2">Core Tech Competencies</div>
+                    </div>
+                    <div class="px-6 py-2">
+                        <div class="text-4xl lg:text-5xl font-extrabold font-display text-brand-orange tracking-tight">100%</div>
+                        <div class="text-sm lg:text-base text-zinc-600 dark:text-darkMuted font-medium mt-2">Dedikasi &amp; Continuous Learning</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS SECTION ===== -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-16" id="skills">
+            <div class="mb-12 text-center max-w-xl mx-auto">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider block mb-1">Kemampuan Teknis</span>
+                <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-brand-black dark:text-white font-display">Professional Skills</h2>
+                <p class="text-sm text-zinc-600 dark:text-darkMuted mt-2">Paham dasar-dasar coding menggunakan HTML, CSS, JavaScript, serta UI/UX prototyping.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- HTML5 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder shadow-sm hover:border-brand-orange/50 transition-all group">
+                    <div class="flex items-center justify-between mb-4">
+                        <i class='bx bxl-html5 text-4xl text-[#E34F26]'></i>
+                        <span class="text-2xl font-bold font-display text-brand-orange">75%</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-black dark:text-white mb-2">HTML5</h3>
+                    <p class="text-xs text-zinc-500 dark:text-darkMuted mb-4">Semantic elements, form accessibility, clean document markup.</p>
+                    <div class="w-full bg-zinc-100 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
+                        <div class="bg-brand-orange h-2 rounded-full transition-all duration-700" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <!-- CSS3 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder shadow-sm hover:border-brand-orange/50 transition-all group">
+                    <div class="flex items-center justify-between mb-4">
+                        <i class='bx bxl-css3 text-4xl text-[#1572B6]'></i>
+                        <span class="text-2xl font-bold font-display text-brand-orange">80%</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-black dark:text-white mb-2">CSS3 / Styling</h3>
+                    <p class="text-xs text-zinc-500 dark:text-darkMuted mb-4">Responsive flexbox &amp; grid, animations, Tailwind utility styling.</p>
+                    <div class="w-full bg-zinc-100 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
+                        <div class="bg-brand-orange h-2 rounded-full transition-all duration-700" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder shadow-sm hover:border-brand-orange/50 transition-all group">
+                    <div class="flex items-center justify-between mb-4">
+                        <i class='bx bxl-javascript text-4xl text-[#F7DF1E]'></i>
+                        <span class="text-2xl font-bold font-display text-brand-orange">55%</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-black dark:text-white mb-2">JavaScript</h3>
+                    <p class="text-xs text-zinc-500 dark:text-darkMuted mb-4">DOM manipulation, event handling, logic dasar, dan interaktivitas.</p>
+                    <div class="w-full bg-zinc-100 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
+                        <div class="bg-brand-orange h-2 rounded-full transition-all duration-700" style="width: 55%"></div>
+                    </div>
+                </div>
+
+                <!-- UX/UI -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder shadow-sm hover:border-brand-orange/50 transition-all group">
+                    <div class="flex items-center justify-between mb-4">
+                        <i class='bx bxs-paint text-4xl text-brand-dotBlue'></i>
+                        <span class="text-2xl font-bold font-display text-brand-orange">75%</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-black dark:text-white mb-2">UX / UI Design</h3>
+                    <p class="text-xs text-zinc-500 dark:text-darkMuted mb-4">Wireframing, visual hierarchy, perancangan antarmuka mobile & web.</p>
+                    <div class="w-full bg-zinc-100 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
+                        <div class="bg-brand-orange h-2 rounded-full transition-all duration-700" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED WORK / PROJECTS ===== -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-16" id="work">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
+                <div>
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider block mb-1">Selected Works</span>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-brand-black dark:text-white font-display">Featured Portfolio</h2>
+                </div>
+                <span class="text-sm font-semibold text-zinc-500 dark:text-zinc-400">Projek &amp; Eksplorasi</span>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <article class="bg-white dark:bg-darkCard rounded-3xl border border-brand-border dark:border-darkBorder overflow-hidden hover:border-brand-orange/50 dark:hover:border-brand-orange/50 transition-all duration-300 shadow-sm flex flex-col group">
+                    <div class="aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 relative overflow-hidden">
+                        <img alt="Project 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/img/work1.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=80';"/>
+                        <div class="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-brand-black dark:text-white shadow-xs">
+                            Web Application
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-lg font-bold text-brand-black dark:text-white group-hover:text-brand-orange transition-colors">Digital Dashboard</h3>
+                                <a class="text-brand-orange font-bold text-sm inline-flex items-center gap-1 hover:underline" href="#">View <span>↗</span></a>
+                            </div>
+                            <p class="text-sm text-zinc-600 dark:text-darkMuted leading-relaxed mb-4">
+                                Desain antarmuka dashboard responsif berbasis web modern.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg text-xs font-medium text-zinc-700 dark:text-zinc-300">HTML5</span>
+                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg text-xs font-medium text-zinc-700 dark:text-zinc-300">CSS3</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-white dark:bg-darkCard rounded-3xl border border-brand-border dark:border-darkBorder overflow-hidden hover:border-brand-orange/50 dark:hover:border-brand-orange/50 transition-all duration-300 shadow-sm flex flex-col group">
+                    <div class="aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 relative overflow-hidden">
+                        <img alt="Project 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/img/work2.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80';"/>
+                        <div class="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-brand-black dark:text-white shadow-xs">
+                            Landing Page
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-lg font-bold text-brand-black dark:text-white group-hover:text-brand-orange transition-colors">Responsive Portal</h3>
+                                <a class="text-brand-orange font-bold text-sm inline-flex items-center gap-1 hover:underline" href="#">View <span>↗</span></a>
+                            </div>
+                            <p class="text-sm text-zinc-600 dark:text-darkMuted leading-relaxed mb-4">
+                                Landing page interaktif yang dioptimasi untuk perangkat desktop dan seluler.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg text-xs font-medium text-zinc-700 dark:text-zinc-300">Tailwind</span>
+                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg text-xs font-medium text-zinc-700 dark:text-zinc-300">JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-white dark:bg-darkCard rounded-3xl border border-brand-border dark:border-darkBorder overflow-hidden hover:border-brand-orange/50 dark:hover:border-brand-orange/50 transition-all duration-300 shadow-sm flex flex-col group">
+                    <div class="aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 relative overflow-hidden">
+                        <img alt="Project 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/img/work3.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80';"/>
+                        <div class="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-brand-black dark:text-white shadow-xs">
+                            UI/UX Concept
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-lg font-bold text-brand-black dark:text-white group-hover:text-brand-orange transition-colors">Clean UI System</h3>
+                                <a class="text-brand-orange font-bold text-sm inline-flex items-center gap-1 hover:underline" href="#">View <span>↗</span></a>
+                            </div>
+                            <p class="text-sm text-zinc-600 dark:text-darkMuted leading-relaxed mb-4">
+                                Eksplorasi tata letak tipografi bersih, kontras warna, dan modular components.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg text-xs font-medium text-zinc-700 dark:text-zinc-300">Figma</span>
+                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg text-xs font-medium text-zinc-700 dark:text-zinc-300">UX Design</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES / WHAT I DO ===== -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24" id="services">
+            <div class="mb-10 text-center max-w-xl mx-auto">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider block mb-1">Fokus &amp; Minat</span>
+                <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-brand-black dark:text-white font-display">What I Do Best</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder hover:border-brand-orange/50 transition-all shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-orange-100 dark:bg-orange-950/60 text-brand-orange flex items-center justify-center font-bold text-lg mb-6">
+                            01
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-black dark:text-white mb-3">Front-End Development</h3>
+                        <p class="text-sm text-zinc-600 dark:text-darkMuted leading-relaxed">
+                            Membangun struktur web yang rapi, cepat diakses, serta terstruktur dengan standar HTML5, CSS3, dan kerangka kerja modern.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-8 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder hover:border-emerald-500/50 transition-all shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg mb-6">
+                            02
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-black dark:text-white mb-3">Responsive Web Design</h3>
+                        <p class="text-sm text-zinc-600 dark:text-darkMuted leading-relaxed">
+                            Menerapkan metodologi <em>Mobile First</em> sehingga website tampil optimal di layar smartphone, tablet, maupun layar monitor desktop.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-3xl bg-white dark:bg-darkCard border border-brand-border dark:border-darkBorder hover:border-blue-500/50 transition-all shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg mb-6">
+                            03
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-black dark:text-white mb-3">UI/UX Prototyping</h3>
+                        <p class="text-sm text-zinc-600 dark:text-darkMuted leading-relaxed">
+                            Merancang tata letak yang ramah pengguna, mudah dipahami (user-friendly), dengan pengalaman visual yang bersih dan menarik.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT & FOOTER SECTION ===== -->
+        <footer class="bg-brand-black dark:bg-[#090A0F] text-white pt-16 lg:pt-24 pb-12 border-t border-zinc-800" id="contact">
+            <div class="max-w-5xl mx-auto px-6 lg:px-12 text-center">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-semibold mb-5">
+                    Punya ide atau ingin berkolaborasi?
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight font-display">
+                    Let’s build something remarkable together.
+                </h2>
+                <p class="text-sm lg:text-base text-zinc-400 max-w-md mx-auto mb-10">
+                    Terbuka untuk diskusi proyek web, kolaborasi kampus, maupun peluang freelance.
+                </p>
+
+                <!-- Form Kontak Ringkas -->
+                <form action="mailto:rafly@example.com" method="post" enctype="text/plain" class="max-w-xl mx-auto mb-12 text-left space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" name="name" placeholder="Nama Anda" required class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:outline-none focus:border-brand-orange text-sm">
+                        <input type="email" name="email" placeholder="Email Anda" required class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:outline-none focus:border-brand-orange text-sm">
+                    </div>
+                    <textarea name="message" rows="4" placeholder="Tulis pesan Anda..." required class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:outline-none focus:border-brand-orange text-sm"></textarea>
+                    <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-brand-orange text-white font-semibold text-sm hover:bg-brand-orangeDark transition-all shadow-lg shadow-brand-orange/25 active:scale-[0.98]">
+                        Kirim Pesan
+                    </button>
+                </form>
+
+                <!-- Social Links -->
+                <div class="flex items-center justify-center gap-6 pt-8 border-t border-zinc-800 text-sm font-medium text-zinc-400">
+                    <a class="hover:text-brand-orange transition-colors" href="https://github.com/Raflyyy4666" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <span class="text-zinc-700">•</span>
+                    <a class="hover:text-brand-orange transition-colors" href="https://www.instagram.com/raflyyaprill_?igsh=MTVocmJqaGk0cWw5dw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <span class="text-zinc-700">•</span>
+                    <a class="hover:text-brand-orange transition-colors" href="https://www.facebook.com/share/14QCTZa39wA/" target="_blank" rel="noopener noreferrer">Facebook</a>
+                </div>
+
+                <!-- Copyright Notice -->
+                <div class="mt-8 text-center text-xs text-zinc-600 dark:text-zinc-500">
+                    © 2025 Rafly. Developed with passion &amp; Tailwind CSS.
+                </div>
+            </div>
         </footer>
+    </main>
 
+    <!-- Dark Mode Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        // Cek saved theme atau preferensi sistem
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
-
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+        // Toggle event
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
+</body>
 </html>
